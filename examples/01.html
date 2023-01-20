@@ -12,6 +12,7 @@
       console.log("*****  *    *  ****     ****     * *        (|  ^   |)");
       console.log("*   *  ******  *   *    *   *     *          | [__] |");
       console.log("*   *  *    *  *    *   *    *    *           -----  ");
+      console.log(`\t\n\t`);
 
       console.log("            +---+                                      ");
       console.log("            |   |                                      ");
@@ -22,7 +23,59 @@
       console.log("+---+---+---+---+     (  -  )     <  Junior   |        ");
       console.log("|   |   |   |   |      | | |       \\ Coder!  /        ");
       console.log("+---+---+---+---+    (___|___)       -------           ");
+      console.log(`\t\n\t`);
     </script>
+    <script>
+      //물품
+      let soju = '소주';
+      let chicken = '너나치킨';
+      //양
+      let sojuAmount = 2;
+      let chickenAmount = 1;
+      //가격
+      let sojuPrice = 3000;
+      let chickenPrice = 12000;
+      //품목별 합계 가격
+      let sojusPrice = sojuPrice * sojuAmount;
+      let chickensPrice = chickenPrice * chickenAmount;
+      //합계
+      let total = sojuPrice*sojuAmount + chickenPrice*chickenAmount;
+      //부가세
+      let vat = total * 10 / 100;
+      //받은금액
+      let takedMoney = 50000;
+      //잔돈
+      let change = takedMoney - total;
+      //과세합계
+      let taxTotal = total - vat;
+      //날짜
+      let date = new Date();
+      let year = date.getFullYear();
+      let month = date.getMonth()+1;
+      let ndate = date.getDate();
+      let hours = date.getHours();
+      let minutes = date.getMinutes();
+      let seconds = date.getSeconds();
+
+      console.log(`[ 음식나라 ]`);
+      console.log('-----------------------------');
+      console.log(`${soju}\t\t${sojuAmount}\t ${sojusPrice}`);
+      console.log(`${chicken}\t${chickenAmount}\t${chickensPrice}`);
+      console.log('-----------------------------');
+      console.log(`과세합계\t\t${taxTotal}`);
+      console.log(`부가세\t\t\t ${vat}`);
+      console.log('-----------------------------');
+      console.log(`총합계\t\t\t${total}`);
+      console.log(`받은금액\t\t${takedMoney}`);
+      console.log(`잔돈\t\t\t${change}`);
+      console.log('-----------------------------');
+      console.log(`     ${year}.${month}.${ndate} ${hours}:${minutes}:${seconds}`);
+
+    </script>
+
+
+
+
 
   </body>
 </html>
