@@ -41,7 +41,7 @@
       // 만나이 = 현재년도 - 출생연도 -1;
       // 단, 생일이 지났으면 만나이 + 1
       age = year - byear;
-      age = month > bmonth && day > bday ? age : age - 1;
+      age = month >= bmonth && day >= bday ? age : age -1;
 
 
 
