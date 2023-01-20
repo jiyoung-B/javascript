@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+<p></p>
+<script></script>
+
+<p></p>
+<script>
+    let now = new Date();
+    let year = now.getFullYear();
+    let month = now.getMonth();
+    let date = now.getDate();
+    // let minutes = now.getMinutes();
+    // let seconds = now.getSeconds();
+
+    // let birthYear = +prompt('태어난 년도? ');
+    // let birthMonth = +prompt('태어난 월은? ');
+    // let birthDate = +prompt('태어난 일은? ');
+
+    let birthDay = prompt('생년월일은? ', '19910313');
+    let name = prompt('이름 :', '');
+
+    let birthYear = birthDay.substr(0, 4);
+    console.log(birthYear);
+
+    let birthMonth = birthDay.substr(4, 2);
+    console.log(birthMonth);
+
+    let birthDate = birthDay.substr(6, 8);
+    console.log(birthDate);
+    let myAge = 0;
+
+
+    // if (month < 10) birthMonth = '0' + birthMonth;
+    // console.log(birthMonth);
+    // if (date < 10) birthDate = '0' + birthDate;
+    // console.log(birthDate);
+
+    // let myAge = year - (+birthYear);
+    // if year > birthYear : (year - birthYear) +1;
+    // if year < birthYear : (year - birthYear);
+    //
+    // if year > birthYear ?  (year - birthYear) +1 : (year - birthYear);
+    // if month > birthMonth ? (month - birthMonth) +1 : (month - birthMonth);
+    // if date > birthDate ? (date - birthDate) +1 : (date - birthDate);
+
+
+    if (year > birthYear) { //년도가 클때
+        if (month >= birthMonth){
+            if (birthDate >= date) {
+               myAge = (year - birthYear) ;
+            }else { myAge = year - birthYear -1; }
+        } else { myAge = year - birthYear;}
+    } else { document.write("잘못된 입력값입니다")};
+
+        //
+        // let myAge = (year < birthYear)? '' : (year - birthYear) +1;
+        //          month > birthMonth ? (month - birthMonth) +1 :
+        //             date > birthDate ? (date - birthDate) +1 : (date - birthDate);
+
+
+    document.write(`${name}님의 나이는 현재 만 나이는 ${myAge}살 입니다.`);
+
+</script>
+
+
+
+</body>
+</html>
