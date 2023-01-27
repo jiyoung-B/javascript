@@ -28,11 +28,11 @@
    6. [while](07loop.html)
    7. [무한 반복문 - while](##무한 반복문---while)
 5. [자바스크립트 배열(array)](06array.html)
-   1. 배열명[위치] = 값
-   2. 배열명.push(값)
-   3. for(let 인덱스 in 배열명)
-   4. for(let 값 of 배열명) --추천
-   5. for(let [인덱스, 값] of 배열명.entries())
+   * 배열명[위치] = 값
+   * 배열명.push(값)
+   * for(let 인덱스 in 배열명)
+   * for(let 값 of 배열명) -- 추천
+   * for(let [인덱스, 값] of 배열명.entries())
    ```javascript
         document.write('<br>');
         // 점심메뉴 출력하기
@@ -53,6 +53,10 @@
             document.write(idx, val, '<br>');
         }
    ```
+6. [자바스크립트 함수](08function.html)
+   1. [화살표 함수](09function.html)
+   2. [scope, hoistion](10scope.html)
+   3. [콜백 함수](11callback.html)
 ---
 
 <!--
