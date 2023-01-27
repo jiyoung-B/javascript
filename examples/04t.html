@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+  <script src="../js/04t.js"></script>
+    <script>
+      // #23 - 복권 발행 프로그램 v1
+      // lotto : 657 : 452 => 1개 일치
+      // lotto : 657 : 524 => 1개 일치
+      // lotto : 657 : 123 => 0개 일치
+      // lotto : 657 : 726 => 2개 일치
+      // lotto : 657 : 626 => 2개 일치
+
+      let lotto = 357 + '';
+      let mykey = '726' /*prompt('복권 숫자 3자리 입력');*/
+
+      result = lotto_v1(lotto, mykey);
+      document.write(result, '<br>');
+      // let match = 0;
+      // let msg = '아쉽지만, 다음 기회에!';
+      //
+      // //숫자 하나씩 비교
+      // if(lotto[0] == mykey[0] || lotto[0] == mykey[1] || lotto[0] || mykey[2]) {++match;}
+      // if(lotto[1] == mykey[0] || lotto[1] == mykey[1] || lotto[1] || mykey[2]) {++match;}
+      // if(lotto[2] == mykey[0] || lotto[2] == mykey[1] || lotto[2] || mykey[2]) {++match;}
+      // if (match == 1) { msg = '1개 일치!!';}
+      // else if (match == 2) { msg = '2개 일치!!';}
+      // else if (match == 3){ msg = '당첨!! 상금 100만원!!';}
+      // document.write(lotto[0], lotto[1], lotto[2], '<br>');
+      // document.write(match, '/', msg, '<br>');
+
+
+
+    </script>
+  </body>
+</html>
