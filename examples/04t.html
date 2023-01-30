@@ -19,20 +19,141 @@
 
       result = lotto_v1(lotto, mykey);
       document.write(result, '<br>');
-      // let match = 0;
-      // let msg = '아쉽지만, 다음 기회에!';
-      //
-      // //숫자 하나씩 비교
-      // if(lotto[0] == mykey[0] || lotto[0] == mykey[1] || lotto[0] || mykey[2]) {++match;}
-      // if(lotto[1] == mykey[0] || lotto[1] == mykey[1] || lotto[1] || mykey[2]) {++match;}
-      // if(lotto[2] == mykey[0] || lotto[2] == mykey[1] || lotto[2] || mykey[2]) {++match;}
-      // if (match == 1) { msg = '1개 일치!!';}
-      // else if (match == 2) { msg = '2개 일치!!';}
-      // else if (match == 3){ msg = '당첨!! 상금 100만원!!';}
-      // document.write(lotto[0], lotto[1], lotto[2], '<br>');
-      // document.write(match, '/', msg, '<br>');
+      let match = 0;
+      let msg = '아쉽지만, 다음 기회에!';
 
+      //숫자 하나씩 비교
+      document.write(lotto[0], lotto[1], lotto[2], '<br>');
+      document.write(match, '/', msg, '<br>');
+    </script>
+    <script>
+      // #26
+      let salary = 3500;
+      let isMarried = 'yes';
 
+      result = computeTax(isMarried, salary);
+      document.write('<hr>');
+      document.write(result, '<br>');
+      document.write('<hr>');
+
+    </script>
+    <script>
+      // #30 스무고개
+      // let num1 = 0; //사용자 입력
+      let num2 = 579; // 시스템 임의 생성
+      // catchNumber(num2);
+    </script>
+    <script>
+      // #32 정수 확인
+       result = checkNumber();
+       document.write(result, '<br>');
+    </script>
+    <script>
+      // #33 카드정보
+      let cardnum = '404825';
+      result = cardCheck(cardnum);
+      document.write(result, '<br>');
+    </script>
+    <script>
+      let daytime = 'daybreak';
+      result = checkDayTime(daytime);
+      document.write(result, '<br>');
+    </script>
+    <script>
+      // #48
+      let account = 25000;
+      let interest = 6;
+
+      result = computeInvestment(account, interest);
+      document.write(result, '<br>');
+
+    </script>
+    <script>
+      // #51 v1
+      result = `<pre>
+            Multiplication Table \n
+       1    2    3    4    5    6    7    8    9
+------------------------------------------------
+1 |    1    2    3    4    5    6    7    8    9
+2 |    2    4    6    8   10   12   14   16   18
+3 |    3    6    9   12   15   18   21   24   27
+4 |    4    8   12   16   20   24   28   32   36
+5 |    5   10   15   20   25   30   35   40   45
+6 |    6   12   18   24   30   36   42   48   54
+7 |    7   14   21   28   35   42   49   56   63
+8 |    8   16   24   32   40   48   56   64   72
+9 |    9   18   27   36   45   54   63   72   81
+     </pre>`;
+
+      document.write(result);
+    </script>
+    <script>
+    // #51 v2
+     result ='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Multiplication Table <br>'
+     result +='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;&nbsp;9 <br>'
+     result +='   ------------------------------------------------ <br>'
+
+      for(let i = 1; i <= 9; ++i){
+        result +=`${i}&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+                  ${i * 1}&nbsp;&nbsp;&nbsp;&nbsp;${i * 2}&nbsp;&nbsp;&nbsp;&nbsp;
+                  ${i * 3}&nbsp;&nbsp;&nbsp;&nbsp;${i * 4}&nbsp;&nbsp;&nbsp;&nbsp;
+                  ${i * 5}&nbsp;&nbsp;&nbsp;&nbsp;${i * 6}&nbsp;&nbsp;&nbsp;&nbsp;
+                  ${i * 7}&nbsp;&nbsp;&nbsp;&nbsp;${i * 8}&nbsp;&nbsp;&nbsp;&nbsp;
+                  ${i * 9}<br>`
+      }
+      document.write(result);
+    </script>
+    <script>
+      // #51 v3
+      result ='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Multiplication Table <br>'
+      result +='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;&nbsp;9 <br>'
+        result +='   ------------------------------------------------ <br>'
+
+          for(let i = 1; i <= 9; ++i){
+            result +=`${i}&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;`
+            for(let j = 1; j <= 9; ++j){
+              result += `${i * j}&nbsp;&nbsp;&nbsp;&nbsp;`;
+            }
+            result += '<br>';
+          }
+      document.write(result);
+    </script>
+    <script>
+      // #51 v4 - 12행 11열 테이블로 만들어보기
+    </script>
+    <script>
+      // #53 - 달력
+      // 년도의 1월 달력 출력
+      // ((년도 - 1)*365 + (년도 - 1)/4 - (년도 - 1)/100 + (년도 - 1)/400 + 1) % 7
+      // 0 - 일, 1 - 월, ..., 6 - 토
+      // 덧) zeller 의 공식을 이용하면 특정날짜의 요일을 알 수 있음
+      let year = 2024 - 1;
+      let day = parseInt( ((year)*365 + (year)/4 - (year)/100 + (year)/400 + 1) % 7 );
+      // 평년 : 365일
+      // 윤년 : 366일
+      // 따라서, 전년도가 윤년이었다면 day에 한번 더 +1 해야 함
+      if((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) ++day;
+
+      result = `<b>January ${year + 1}</b><br>`;
+      result += `---------------------------------------------- <br>`;
+      result += `Sun&nbsp;&nbsp;&nbsp;Mon&nbsp;&nbsp;&nbsp;
+                 Tue&nbsp;&nbsp;&nbsp;Wed&nbsp;&nbsp;&nbsp;
+                 Thu&nbsp;&nbsp;&nbsp;Fri&nbsp;&nbsp;&nbsp;Sat <br>`;
+      // 계산한 요일만큼 공백 출력
+      for(let i = 0; i < day; ++i){
+        result += `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`;
+      }
+
+      // 전 단계에서 출력한 요일을 포함해서 다음 요일 출력
+      for (let i = 1 + day; i <= 31 + day; ++i) {
+        result += `&nbsp;&nbsp;&nbsp;${i - day}&nbsp;&nbsp;&nbsp;`;
+        if(i % 7 == 0){
+          result += '<br>'
+        };
+      }
+
+      document.write(result, '<br>');
+      document.write('요일숫자 : ', day, '<br>');
 
     </script>
   </body>
