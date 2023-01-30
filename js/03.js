@@ -62,7 +62,33 @@
 
     }
 
-//
+//35
+    let checkDayTime = (daytime) => {
+        let result = '';
+        switch (daytime){
+            case 'morninghours' : result = '아침시간 (7-12)'; break;
+            case 'midday' :
+            case 'noon' : result = '점심시간 (12-1)'; break;
+            case 'afternoon hours' : result = '오후 (1-6)'; break;
+            case 'evening hours' : result = '저녁시간 (6-9)'; break;
+            case 'night hours' : result = '밤시간 (9-12)'; break;
+            case 'midnight' : result = '자정시간 (12)'; break;
+            case 'early morning hours' : result = '새벽시간 (12-5)'; break;
+            case 'small hours' : result = '새벽 (1-3)'; break;
+            case 'dawn' :
+            case 'daybreak' : result = '해뜰녘 (5-7)'; break;
+            default : result = '잘못 입력하셨습니다.'; break;
+        }
+        return result;
+    }
 
+//48
+    let computeInvestment = (money) => {
+        while(true){
+
+        }
+
+
+    }
 
 
