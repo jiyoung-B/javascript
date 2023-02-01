@@ -104,7 +104,7 @@
 
         try {
             checkAge2(150);
-        } catch(e) {
+        } catch(e) { // e는 시스템이 만들어줌. ioc 제어역전(inversion of control)
             if(e instanceof RangeError)
                 document.write('나이를 올바르게 입력하세요!');
         }
