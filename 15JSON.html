@@ -176,7 +176,7 @@
         // 콜백함수에 매개변수로 넘겨서 처리하는 함수
         // 결과는 배열형태로 넘겨 받음
         // filter, map, reduce : 고차함수
-        sj = obj.sjs.filter(function(s) {
+        sj = obj.sjs.filter(function(s) { // s는 시스템이 만들어줌. ioc 제어역전
             document.write(s, '<br>'); // [object Object]
             document.write(s.name, '<br>'); // 혜교, 지현, 수지
             if(s.name == '지현') return s;
@@ -187,7 +187,8 @@
 
 
         // ** retrun s를 하는데, 배열 [0][로뽑아야함
-        document.write('<br> 지현 : ', sj[0].grd, '<br>');
+        document.write('<br> #################지현 : ', sj[0].grd, '<br>');
+
     </script>
 
 
