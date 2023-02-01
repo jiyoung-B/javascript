@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>자바스크립트 JSON</title>
+    <h2>개요</h2>
+    <p>JavaScript Object Notation의 약자</p>
+    <p>데이터를 저장하거나 다른 시스템으로 전송 시 많이 사용하는 데이터 교환 형식</p>
+    <p>즉, 시스템에 생성된 객체를 문자열 형태로 변환해서
+        네트워크를 통해 다른 곳으로 전송할 때
+        자주 사용하는 데이터 형식을 의미</p>
+    <p>이때, 전환된 문자열에는 원하는 정보가 있는 객체의 속성을 그대로 포함되어야 함</p>
+
+</head>
+<body>
+    <h2>개요</h2>
+    <p>JavaScript Object Notation의 약자</p>
+    <p>데이터를 저장하거나 다른 시스템으로 전송 시 많이 사용하는 데이터 교환 형식</p>
+    <p>즉, 시스템에 생성된 객체를 문자열 형태로 변환해서
+        네트워크를 통해 다른 곳으로 전송할 때
+        자주 사용하는 데이터 형식을 의미</p>
+    <p>이때, 전환된 문자열에는 원하는 정보가 있는 객체의 속성을 그대로 포함되어야 함</p>
+    <p>이전에 사용</p>
+
+    <script>
+        // 아이디/비밀번호로 구성된 user 객체 정의 1 - csv
+        // userid,abc123
+        // passwd,987xyz
+        // 직렬화/역직렬화 필요 csv
+    </script>
+    <script>
+        // 아이디/비밀번호로 구성된 user 객체 정의 2 - xml 내가 원하는대로 키워드태그로 데이터 꾸밈
+        // <user>
+        //      <userid>abc123</userid>
+        //      <passwd>987xyz</passwd>
+        // </user>
+
+        // csv에 비해 직렬화/역직렬화 편하지만
+        // 데이터 정의시 쓸데없는 코드가 많이 필요
+
+    </script>
+    <script>
+        // 아이디/비밀번호로 구성된 user 객체 정의 3 - json
+        // csv, xml에 비해 직렬화/역직렬화가 편하고
+        // 데이터 정의시 쓸데없는 코드도 많이 쓰이지 않음
+        let user = {
+            'userid' : 'abc123',
+            'passwd' : '987xyz'
+        };
+    </script>
+
+    <h2>JSON 직렬화/역직렬화</h2>
+    <p>stringify(직렬화) : 객체를 문자열로 변환하는 함수, 데이터를 서버로 전송 또는 객체 출력시 사용</p>
+    <p>parse(역직렬화) : 문자열을 객체로 변환하는 함수, 서버가 보내 준 데이터를 클라이언트에서 작업시 사용</p>
+
+    <script>
+        // 위에서 만든 user 객체 출력하기 1 - (x)
+        document.write(user, '<br>'); // 출력 :[object Object]
+
+        // 위에서 만든 user 객체 출력하기 2 - toString (세모)
+        // 객체의 내용을 출력하기 위해 toString함수 추가
+        // 하지만, 객체의 속성이 추가되면 toString함수도 같이 수정 필요!!
+        let user2 = {
+            'userid' : 'abc123',
+            'passwd' : '987xyz',
+            toString(){
+                return `${this.userid}, ${this.passwd}`;
+            }
+        };
+        document.write(user2, '<br>');
+
+        // 위에서 만든 user 객체 출력하기 3 - stringify (o)
+        document.write(JSON.stringify(user), '<br>');
+
+        let json = JSON.stringify(user);
+        document.write(json, '<br>');
+        // stringify함수만으로 객체 내용 출력
+
+    </script>
+
+    <script>
+        user = '{ "userid":"abc123","passwd":"987xyz" }';
+
+        let obj = JSON.parse(user);
+
+        document.write(obj,'<br>');         // [object Object]
+        document.write(obj.userid,'<br>');  // abc123
+        document.write(obj.passwd,'<br>');  // 987xyz
+    </script>
+
+    <script>
+        let sjs = `[{ "name": "혜교", "grd": "수" },
+                    { "name": "지현", "grd": "미" },
+                    { "name": "수지", "grd": "가" }]`; // {} 3개니까 배열에 넣어줘야 합니다~
+
+        obj = JSON.parse(sjs);
+        document.write(obj, '<br>');
+
+        // 배열객체를 구성하는 개별 요소에 접근하려면
+        // 객체명[인덱스].속성명 형식으로 사용해야 함
+        document.write(obj[0].name, obj[0].grd, '<br>'); // 배열[0]째의 name 출력
+        document.write(obj[2].name, obj[2].grd, '<br>');
+    </script>
+
+    <script>
+        // users 배열에서 abc123 라는 아이디가 존재하는지 확인
+        users = ['abc456', 'abc789', 'xyz123', 'abc123', 'xyz789'];
+
+        document.write('<br>----------------<br>');
+        document.write(users.indexOf('abc123') >=0 ? '문자열 있음 <br>' : '없음 <br>');
+        // if (users[0] == 'abc123') document.write('1-yes!');
+        // if (users[1] == 'abc123') document.write('2-yes!');
+        // if (users[2] == 'abc123') document.write('3-yes!');
+        // if (users[3] == 'abc123') document.write('4-yes!');
+        // if (users[4] == 'abc123') document.write('5-yes!');
+
+        for (let i = 0; i <= 4; ++i)
+            if (users[i] == 'abc123') document.write(`${i+1}-yes <br>`);
+
+    </script>
+    <script>
+        // sjs = `[{ "name": "혜교", "grd": "수" },
+        //             { "name": "지현", "grd": "미" },
+        //             { "name": "수지", "grd": "가" }]`;
+        document.write('<br> ---------------------------- <br>');
+        obj = JSON.parse(sjs);
+        document.write('<br> parse : ', obj, '<br>');
+
+        document.write('<br> ---------------------------- <br>');
+        obj2 = JSON.stringify(sjs);
+        document.write('<br> stringify : ', obj2, '<br>');
+
+        document.write('<br> ---------------------------- <br>');
+
+        // 지현 학생의 성적 출력한다면 ? v1
+        // if(obj[0].name == '지현') document.write(obj[0].grd);
+        // if(obj[1].name == '지현') document.write(obj[1].grd);
+        // if(obj[2].name == '지현') document.write(obj[2].grd);
+
+        document.write(obj[2].name, '<br>');
+        for (let i = 0; i < obj.length; ++i) {
+            if (obj[i].name == '지현'){
+                document.write(`지현의 성적은 : ${obj[i].grd} 입니다.`);
+                break; // 원하는 데이터를 찾았으니 break로 중지시켜준다! 아니면 낭비!
+            }
+        }
+
+        // 변수에 담아, 반복문 밖에서 출력하는 것이 나음.
+        let sj = null;
+        for (let i = 0; i < obj.length; ++i) {
+            if (obj[i].name == '지현'){
+                sj = obj[i];
+                break; //
+            }
+        }
+        document.write(`지현의 성적은 : ${sj.grd} 입니다.`);
+    </script>
+    <script>
+        // 지현 학생의 성적 출력한다면 ? v2
+        // filter 함수로 객체 탐색시
+        // 탐색 대상의 자료형은 객체여야 함!
+        //sj = obj.filter();-(ㅌ)
+        document.write('<br> @@@@@@@@@@ <br>');
+
+        sjs = `{"sjs" : [{ "name": "혜교", "grd": "수" },
+                        { "name": "지현", "grd": "미" },
+                        { "name": "수지", "grd": "가" }]}`;
+        obj = JSON.parse(sjs);
+        sj = obj.sjs.filter(s => (s.name == '지현')); //한줄은 s 변수에 대입, s.name이 지현이랑같은지 확인.
+        // filter로 넘어온 값들은 자동적으로 배열에 저장되어 [0]로 추출.
+
+        //풀어쓰면 콜백함수!!
+        // 우리가 직접넘기는게아니라 콜백함수 매개변수로 자동으로 넘겨줘. s
+
+        // filter : 대상 객체의 요소를 순회해 가며
+        // 콜백함수에 매개변수로 넘겨서 처리하는 함수
+        // 결과는 배열형태로 넘겨 받음
+        // filter, map, reduce : 고차함수
+        sj = obj.sjs.filter(function(s) {
+            document.write(s, '<br>'); // [object Object]
+            document.write(s.name, '<br>'); // 혜교, 지현, 수지
+            if(s.name == '지현') return s;
+        });
+
+        sj = obj.sjs.filter(s => (s.name == '지현'));
+        // sj = obj['sjs'].filter(s => (s.name == '지현'));
+
+
+        // ** retrun s를 하는데, 배열 [0][로뽑아야함
+        document.write('<br> 지현 : ', sj[0].grd, '<br>');
+    </script>
+
+
+</body>
+</html>
+
+
+
