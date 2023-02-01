@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>class 정의하기</title>
+</head>
+<body>
+
+<script>
+
+  //*** 멤버변수 -> 생성자 -> 셋/겟 ->투스트링
+
+  class Employees {
+    #employee_id = 0;
+    #first_name = '';
+    #last_name = '';
+    #email = '';
+    #phone_number = '';
+    #hire_date = '';
+    #job_id = '';
+    #salary = 0;
+    #commission_pct = 0;
+    #manager_id = 0;
+    #department_id = 0;
+
+    constructor(employee_id, first_name, last_name, email, phone_number,
+                hire_date, job_id, salary, commission_pct, manager_id, department_id) {
+      this.#employee_id = employee_id;
+      this.#first_name = first_name ;
+      this.#last_name = last_name ;
+      this.#email = email;
+      this.#phone_number = phone_number ;
+      this.#hire_date = hire_date ;
+      this.#job_id = job_id ;
+      this.#salary =salary;
+      this.#commission_pct = commission_pct;
+      this.#manager_id = manager_id;
+      this.#department_id = department_id;
+    }
+
+   set employee_id(employee_id){ this.#employee_id = employee_id;}
+   set first_name(first_name){ this.#first_name  = first_name;}
+   set last_name(last_name){ this.#last_name  = last_name;}
+   set email(email){ this.#email = email;}
+   set phone_number(phone_number){ this.#phone_number  = phone_number;}
+   set hire_date(hire_date){ this.#hire_date  = hire_date;}
+   set job_id(job_id){ this.#job_id  = job_id;}
+   set salary(salary){ this.#salary = salary;}
+   set commission_pct(commission_pct){ this.#commission_pct = commission_pct;}
+   set manager_id(manager_id){ this.#manager_id = manager_id;}
+   set department_id(department_id){ this.#department_id = department_id;}
+
+    get employee_id(){ return this.#employee_id;}
+    get first_name(){ return this.#first_name  = first_name;}
+    get last_name(){ this.#last_name  = last_name;}
+    get email(){ this.#email = email;}
+    get phone_number(){ this.#phone_number  = phone_number;}
+    get hire_date(){ this.#hire_date  = hire_date;}
+    get job_id(){ this.#job_id  = job_id;}
+    get salary(){ this.#salary = salary;}
+    get commission_pct(){ this.#commission_pct = commission_pct;}
+    get manager_id(){ this.#manager_id = manager_id;}
+    get department_id(){ this.#department_id = department_id;}
+
+      toString() {
+
+      }
+  };
+
+  class Departments {
+      #department_id = 0;
+      #department_name = '';
+      #manager_id = 0;
+      #location_id =0;
+
+      // department_id
+      // department_name
+      // manager_id
+      // location_id
+
+      constructor() {
+          this.#department_id = department_id;
+          this.#department_name = department_name;
+          this.#manager_id = manager_id;
+          this.#location_id = location_id;
+      }
+
+      set department_id(department_id){this.#department_id=department_id;}
+      set department_name(department_name){this.#department_name=department_name;}
+      set manager_id(manager_id){this.#manager_id=manager_id;}
+      set location_id(location_id){this.#location_id=location_id;}
+
+      get department_id(){return this.#department_id;}
+      get department_name(){return this.#department_name;}
+      get manager_id(){return this.#manager_id;}
+      get location_id(){return this.#location_id;}
+
+      toString(){
+
+      }
+
+  }
+
+
+</script>
+
+</body>
+</html>
