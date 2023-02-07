@@ -28,7 +28,8 @@
     <div>
         <select id="sido"></select>
         <select id="gugun"></select>
-        <select id="dong"></select>
+        <select id="dong"></select><br>
+        <span></span>
     </div>
     <script>
         let url1 = 'http://127.0.0.1:8080/server/sido.jsp';
@@ -63,16 +64,25 @@
         } // setSido
 
         // 1. 시도 출력
+        // 지저분해서 다른방식으로 해보겠다. node책 p.86~
         let getSido = () => {
-            let req = new XMLHttpRequest();
-            req.onreadystatechange = () => {
-                if (req.readyState == 4 && req.status == 200) {
-                    //console.log(req.responseText);
-                    setSido(req.responseText); // 강원,경기,경남,경북 ...
-                }
-            };
-            req.open('get', url1);
-            req.send();
+            // let req = new XMLHttpRequest();
+            // req.onreadystatechange = () => {
+            //     if (req.readyState == 4 && req.status == 200) {
+            //         //console.log(req.responseText);
+            //         setSido(req.responseText); // 강원,경기,경남,경북 ...
+            //     }
+            // };
+
+            // req.open('get', url1);
+            // req.send();
+
+
+            // 위에 코드가 지저분해서 다른방식으로 해보겠다. node책 p.86~
+            // ajax promise인 fetch 함수로 변경 - jquery 보다 더 간단함.
+            fetch(url1)
+                .then(response => response.text())
+                .then(text => setSido(text));
         };
 
 
@@ -83,15 +93,19 @@
             // 선택한 시도가 '- 광역시 -' 라면 함수 실행 중지
             if (sido.selectedIndex == 0) return; // 반환값없이 return 만 쓰면 함수실행 중단하고 나간다.
 
-            let req = new XMLHttpRequest();
-            req.onreadystatechange = () => {
-                if (req.readyState == 4 && req.status == 200) {
-                    console.log(req.responseText);
-                    setGugun(req.responseText);
-                }
-            };
-            req.open('get', url2+qry);
-            req.send();
+            // let req = new XMLHttpRequest();
+            // req.onreadystatechange = () => {
+            //     if (req.readyState == 4 && req.status == 200) {
+            //         console.log(req.responseText);
+            //         setGugun(req.responseText);
+            //     }
+            // };
+            // req.open('get', url2+qry);
+            // req.send();
+
+            fetch(url2+qry)
+                .then(response => response.text())
+                .then(text => setGugun(text));
         });
         // 2. 구군 출력
         const setGugun = (guguns) => {
@@ -110,15 +124,19 @@
         };
 
         let getGugun = () => {
-            let req = new XMLHttpRequest();
-            req.onreadystatechange = () => {
-                if (req.readyState == 4 && req.status == 200) {
-                    console.log(req.responseText);
-                    setGugun(req.responseText); // 강원,경기,경남,경북 ...
-                }
-            };
-            req.open('get', url2);
-            req.send();
+            // let req = new XMLHttpRequest();
+            // req.onreadystatechange = () => {
+            //     if (req.readyState == 4 && req.status == 200) {
+            //         console.log(req.responseText);
+            //         setGugun(req.responseText); // 강원,경기,경남,경북 ...
+            //     }
+            // };
+            // req.open('get', url2);
+            // req.send();
+
+            fetch(url2)
+                .then(response => response.text())
+                .then(text => setGugun(text));
         };
 
 
@@ -144,18 +162,22 @@
         gugun.addEventListener('change', () => {
             let qry = `?sido=${sido.value}&gugun=${gugun.value}`;
 
-            if (gugun.selectedIndex == 0) return; // 반환값없이 return 만 쓰면 함수실행 중단하고 나간다.
+            // 선택한 구군이 '- 시/군/구 -'라면 함수 실행 중지
+            if (gugun.selectedIndex == 0) return;
 
-            let req = new XMLHttpRequest();
-            req.onreadystatechange = () => {
-                if (req.readyState == 4 && req.status == 200) {
-                    console.log(req.responseText);
-                    setDong(req.responseText);
-                }
-            };
-            req.open('get', url3+qry);
-            req.send();
+            // let req = new XMLHttpRequest();
+            // req.onreadystatechange = () => {
+            //     if (req.readyState == 4 && req.status == 200) {
+            //         console.log(req.responseText);
+            //         setDong(req.responseText);
+            //     }
+            // };
+            // req.open('get', url3+qry);
+            // req.send();
 
+            fetch(url3+qry)
+                .then(response => response.text())
+                .then(text => setDong(text));
         });
 
 
@@ -178,7 +200,19 @@
             }
         };
 
-// getDong은 필요없었다..
+        // 읍면동 선택했을때 이벤트 처리
+        //const address = document.querySelector('span');
+        dong.addEventListener('change', () => {
+            let msg = `${sido.value}, ${gugun.value}, ${dong.value}`;
+           // console.log(msg);
+            if (dong.value == '- 읍/면/동 -') return;
+            alert(msg);
+           // return address.innerHTML = msg;
+        });
+
+
+
+        // getDong은 필요없었다..
         // let getDong = () => {
         //     let req = new XMLHttpRequest();
         //     req.onreadystatechange = () => {
@@ -190,24 +224,6 @@
         //     req.open('get', url3);
         //     req.send();
         // };
-
-// 여기도 필요없었다고한다.. ?
-//         dong.addEventListener('change', () => {
-//             let qry = '?sido=' + sido.value + '&gugun=' + gugun.value;
-//             console.log(qry);
-//
-//             if (dong.selectedIndex == 0) return;
-//
-//             let req = new XMLHttpRequest();
-//             req.onreadystatechange = () => {
-//                 if (req.readyState == 4 && req.status == 200) {
-//                     console.log(req.responseText);
-//                     setDong(req.responseText);
-//                 }
-//             };
-//             req.open('get', url3+qry);
-//             req.send();
-//         });
 
 
 
