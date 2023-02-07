@@ -48,8 +48,9 @@
         };
 
         function setSido(sidos) {
+            console.log(sidos.trim());
             // 응답 데이터를 ,로 구분해서 배열에 저장
-            let cols = sidos.split(','); // 강원,경기,경남,경북 ...,
+            let cols = sidos.trim().split(','); // 강원,경기,경남,경북 ...,
 
             // 기본 option 요소 추가
             makeopt(sido, '- 광역시 -');
@@ -110,7 +111,7 @@
         // 2. 구군 출력
         const setGugun = (guguns) => {
             // 응답 데이터를 ,로 구분해서 배열에 저장
-            let cols = guguns.split(',');
+            let cols = guguns.trim().split(',');
 
             // 기존 데이터 지우기
             while(gugun.lastChild){
@@ -185,7 +186,7 @@
 
         const setDong = (dongs) => {
             // 응답 데이터를 ,로 구분해서 배열에 저장
-            let cols = dongs.split(',');
+            let cols = dongs.trim().split(',');
 
             // 기존 데이터 지우기
             while(dong.lastChild){
