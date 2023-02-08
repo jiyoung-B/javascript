@@ -170,23 +170,32 @@
               //  'use strict'
 
                 // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                const forms = document.querySelectorAll('.needs-validation')
-                //const forms = document.querySelector('.needs-validation') - 안됨
-                console.log('폼스 :', forms);
+               // const forms = document.querySelectorAll('.needs-validation') //- all로 쓰면 forEach로 값 꺼내기?
+                const form = document.querySelector('.needs-validation') // - 하나만 선택할 경우 반복문 안쓰고 그냥 바로 하나만 이벤트 리스너 ㄱㄱ
+                //console.log('폼스 :', forms);
+                console.log('폼스 :', form);
 
                 // Loop over them and prevent submission
-                Array.from(forms).forEach(form => {
-                    form.addEventListener('submit', e => {
-                        // console.log(form.checkValidity);
-                        if (!form.checkValidity()) {
-                            e.preventDefault()  // 작동하지 않게끔
-                            e.stopPropagation() // 전파되지 않게끔
-                        }
-                        form.classList.add('was-validated')
-                    }, false) // addEventListener
-                }) // forEach
-            })()
+                // Array.from(forms).forEach(forms => {
+                //     forms.addEventListener('submit', e => {
+                //         // console.log(form.checkValidity);
+                //         if (!forms.checkValidity()) {
+                //             e.preventDefault()  // 작동하지 않게끔
+                //             e.stopPropagation() // 전파되지 않게끔
+                //         }
+                //         forms.classList.add('was-validated')
+                //     }, false) // addEventListener
+                // }) // forEach
 
+                form.addEventListener('submit', e => {
+                    if (!form.checkValidity()) {
+                        e.preventDefault()  // 작동하지 않게끔
+                        e.stopPropagation() // 전파되지 않게끔
+                    }
+                    form.classList.add('was-validated')
+                }, false) // addEventListener
+                 // forEach
+                })()
 
         </script>
 
